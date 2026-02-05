@@ -1,0 +1,7 @@
+1- In the starting screen, the players choses which grid they want to play in.
+2- The grid is shown to the player.
+3- The players starts fliping two cards.
+4- If the two flipped cards matched, they will stay flipped, and the player can continue playing the game.
+5- If the two cards are not matching, they will flip back, and the user then will be able to continue the game, but they will lose one chance out of three.
+6- If all the chances are consumed, the player will be directed to a "gameover" page, from where he can go to the start screen to start again or change the grid.
+7- Once all the cards are flipped, the game ends and the user will be directed to a "winner" page, from where he can go to the start screen.
