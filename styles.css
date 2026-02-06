@@ -16,3 +16,12 @@
   background-color: black;
   margin: 5px;
 }
+
+.selected {
+  width: 200px;
+  opacity: 1;
+}
+
+.not-selected {
+  opacity: 0.5;
+}

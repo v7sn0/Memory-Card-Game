@@ -4,8 +4,7 @@ const btn8by8 = document.querySelector("#btn-8-by-8")
 
 let cardsContainer = document.querySelector(".four-by-four-container")
 let cards = document.querySelectorAll(".square")
-//let firstHalfCards = document.querySelectorAll(".square")
-let secondHalfCards = document.querySelectorAll(".second-half")
+
 let randomIndex
 let fruitPicture
 
@@ -40,7 +39,6 @@ let halfPicsArr = [
 ]
 
 let clonedArray = [...picsArray]
-//let secondHalfArray = [...originalPicsArray]
 
 window.addEventListener("load", () => {
   cards.forEach((card) => {
@@ -53,18 +51,49 @@ window.addEventListener("load", () => {
   })
 })
 
-/* let counter = 0
+let counter = 0
+let firstSelectedCard
+let secondSelectedCard
+let firstPic
+let secondPic
 
 cards.forEach((card) => {
   card.addEventListener("click", () => {
-    if (counter === 0 && ) {
-      console.log(card)
+    card.classList.add("selected")
+    if (
+      counter === 0 &&
+      card.classList.contains("selected") &&
+      card.classList.contains("square")
+    ) {
+      firstSelectedCard = card
+      firstPic = card.innerHTML
+      firstSelectedCard.classList.remove("square")
+      firstSelectedCard.style.opacity = "1"
+      console.log(firstPic)
       counter++
-    } else if (counter === 1) {
-      console.log("hehe")
-      //counter++
-    } else {
-      counter = 0
+    } else if (
+      counter === 1 &&
+      card.classList.contains("selected") &&
+      card.classList.contains("square")
+    ) {
+      secondSelectedCard = card
+      secondPic = card.innerHTML
+      secondSelectedCard.classList.remove("square")
+      secondSelectedCard.style.opacity = "1"
+      console.log(secondPic)
+      counter++
+      if (firstPic === secondPic) {
+        console.log("reached")
+        firstSelectedCard.classList.remove("square")
+        secondSelectedCard.classList.remove("square")
+        console.log(secondSelectedCard.classList)
+        counter = 0
+      } else {
+        firstSelectedCard.style.opacity = "1"
+        secondSelectedCard.style.opacity = "1"
+      }
+    } else if (counter === 2) {
+      console.log("lost")
     }
   })
-}) */
+})
