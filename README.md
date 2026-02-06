@@ -27,16 +27,16 @@ A memory card game, where the user flips cards, trying to find two matching card
 ### Screenshots ###
 In progress.
 #### Starting Page Structure ####
-![Starting Page Structure](page1.drawio.png)
+![Starting Page Structure](./images/page1.drawio.png)
 
 #### Game Page Structure ####
-![Game Page Structure](page2.drawio.png)
+![Game Page Structure](./images/page2.drawio.png)
 
 #### Winner Page Structure ####
-![Winner Page Structure](page3.drawio.png)
+![Winner Page Structure](./images/page3.drawio.png)
 
 #### GameOver Page Structure ####
-![GameOver Page Structure](page4.drawio.png)
+![GameOver Page Structure](./images/page4.drawio.png)
 
 ***
 
