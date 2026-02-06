@@ -52,6 +52,7 @@ window.addEventListener("load", () => {
 })
 
 let counter = 0
+let chanceCounter = 0
 let firstSelectedCard
 let secondSelectedCard
 let firstPic
@@ -68,7 +69,6 @@ cards.forEach((card) => {
       firstSelectedCard = card
       firstPic = card.innerHTML
       firstSelectedCard.classList.remove("square")
-      firstSelectedCard.style.opacity = "1"
       console.log(firstPic)
       counter++
     } else if (
@@ -79,21 +79,27 @@ cards.forEach((card) => {
       secondSelectedCard = card
       secondPic = card.innerHTML
       secondSelectedCard.classList.remove("square")
-      secondSelectedCard.style.opacity = "1"
       console.log(secondPic)
       counter++
       if (firstPic === secondPic) {
         console.log("reached")
+        firstSelectedCard.classList.remove("not-selected")
+        secondSelectedCard.classList.remove("not-selected")
         firstSelectedCard.classList.remove("square")
         secondSelectedCard.classList.remove("square")
         console.log(secondSelectedCard.classList)
         counter = 0
       } else {
-        firstSelectedCard.style.opacity = "1"
-        secondSelectedCard.style.opacity = "1"
+        firstSelectedCard.classList.add("not-selected")
+        secondSelectedCard.classList.add("not-selected")
+        firstSelectedCard.classList.remove("selected")
+        secondSelectedCard.classList.remove("selected")
+        counter = 0
+        chanceCounter++
       }
-    } else if (counter === 2) {
-      console.log("lost")
+      if (chanceCounter === 3) {
+        console.log("you lost")
+      }
     }
   })
 })
