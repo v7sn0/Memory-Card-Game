@@ -2,7 +2,7 @@ const btn4by4 = document.querySelector("#btn-4-by-4")
 const btn6by6 = document.querySelector("#btn-6-by-6")
 const btn8by8 = document.querySelector("#btn-8-by-8")
 
-let cardsContainer = document.querySelector(".four-by-four-container")
+let cardsContainer = document.querySelector(".cards-container")
 let cards = document.querySelectorAll(".not-selected")
 let endScreen = document.querySelector(".end-screen")
 
@@ -16,27 +16,52 @@ let picsArray = [
   "4-by-4-imgs/watermelon.png",
   "4-by-4-imgs/kiwi.png",
   "4-by-4-imgs/mango.png",
-  "4-by-4-imgs/strawberry.png",
-  "4-by-4-imgs/pineapple.png",
   "4-by-4-imgs/apple.png",
   "4-by-4-imgs/banana.png",
   "4-by-4-imgs/berry.png",
   "4-by-4-imgs/watermelon.png",
   "4-by-4-imgs/kiwi.png",
-  "4-by-4-imgs/mango.png",
+  "4-by-4-imgs/mango.png", ////6
+]
+
+let threeByFourArr = [...picsArray]
+let fiveByFourArr = [
+  ...picsArray,
+  "4-by-4-imgs/blueberry.png",
+  "4-by-4-imgs/fig.png",
+  "4-by-4-imgs/pear.png",
+  "4-by-4-imgs/grapes.png",
+  "4-by-4-imgs/blueberry.png",
+  "4-by-4-imgs/fig.png",
+  "4-by-4-imgs/pear.png",
+  "4-by-4-imgs/grapes.png", ///4
+]
+let sevenByFiveArr = [
+  ...picsArray,
+  "4-by-4-imgs/blueberry.png",
+  "4-by-4-imgs/fig.png",
+  "4-by-4-imgs/pear.png",
+  "4-by-4-imgs/grapes.png",
+  "4-by-4-imgs/pomegranate.png",
+  "4-by-4-imgs/orange.png",
+  "4-by-4-imgs/strawberry.png",
+  "4-by-4-imgs/pineapple.png",
+  "4-by-4-imgs/blueberry.png",
+  "4-by-4-imgs/fig.png",
+  "4-by-4-imgs/pear.png",
+  "4-by-4-imgs/grapes.png",
+  "4-by-4-imgs/pomegranate.png",
+  "4-by-4-imgs/orange.png",
   "4-by-4-imgs/strawberry.png",
   "4-by-4-imgs/pineapple.png",
 ]
 
-let clonedArray = [...picsArray]
-
 window.addEventListener("load", () => {
   cards.forEach((card) => {
-    randomIndex = Math.floor(Math.random() * clonedArray.length)
+    randomIndex = Math.floor(Math.random() * sevenByFiveArr.length)
     fruitPicture = document.createElement("img")
-    fruitPicture.setAttribute("src", clonedArray[randomIndex])
-    //fruitPicture.style.width = "150px"
-    clonedArray.splice(randomIndex, 1)
+    fruitPicture.setAttribute("src", sevenByFiveArr[randomIndex])
+    sevenByFiveArr.splice(randomIndex, 1)
     card.appendChild(fruitPicture)
   })
 })
@@ -44,7 +69,6 @@ window.addEventListener("load", () => {
 let counter = 0
 let chanceCounter = 3
 let matchCounter = 0
-let chancesLeft
 let chancesLabel = document.querySelector("#chances-label")
 let firstSelectedCard
 let secondSelectedCard
@@ -97,7 +121,7 @@ cards.forEach((card) => {
       }
     }
 
-    if (matchCounter === 8) {
+    if (matchCounter === 4) {
       console.log("you won")
     }
   })
