@@ -1,7 +1,3 @@
-const btn4by4 = document.querySelector("#btn-4-by-4")
-const btn6by6 = document.querySelector("#btn-6-by-6")
-const btn8by8 = document.querySelector("#btn-8-by-8")
-
 let cardsContainer = document.querySelector(".cards-container")
 let cards = document.querySelectorAll(".not-selected")
 let endScreen = document.querySelector(".end-screen")
@@ -22,12 +18,6 @@ let picsArray = [
   "4-by-4-imgs/watermelon.png",
   "4-by-4-imgs/kiwi.png",
   "4-by-4-imgs/mango.png",
-]
-
-let threeByFourArr = [...picsArray]
-
-let fiveByFourArr = [
-  ...picsArray,
   "4-by-4-imgs/blueberry.png",
   "4-by-4-imgs/fig.png",
   "4-by-4-imgs/pear.png",
@@ -38,46 +28,30 @@ let fiveByFourArr = [
   "4-by-4-imgs/grapes.png",
 ]
 
-let sevenByFourArr = [
-  ...picsArray,
-  "4-by-4-imgs/blueberry.png",
-  "4-by-4-imgs/fig.png",
-  "4-by-4-imgs/pear.png",
-  "4-by-4-imgs/grapes.png",
-  "4-by-4-imgs/pomegranate.png",
-  "4-by-4-imgs/orange.png",
-  "4-by-4-imgs/strawberry.png",
-  "4-by-4-imgs/pineapple.png",
-  "4-by-4-imgs/blueberry.png",
-  "4-by-4-imgs/fig.png",
-  "4-by-4-imgs/pear.png",
-  "4-by-4-imgs/grapes.png",
-  "4-by-4-imgs/pomegranate.png",
-  "4-by-4-imgs/orange.png",
-  "4-by-4-imgs/strawberry.png",
-  "4-by-4-imgs/pineapple.png",
-]
+clonedArr = [...picsArray]
 
 window.addEventListener("load", () => {
   cards.forEach((card) => {
-    randomIndex = Math.floor(Math.random() * sevenByFourArr.length)
+    randomIndex = Math.floor(Math.random() * clonedArr.length)
     fruitPicture = document.createElement("img")
-    fruitPicture.setAttribute("src", sevenByFourArr[randomIndex])
-    sevenByFourArr.splice(randomIndex, 1)
+    fruitPicture.setAttribute("src", clonedArr[randomIndex])
+    clonedArr.splice(randomIndex, 1)
     card.appendChild(fruitPicture)
+    chancesLabel.textContent = chanceCounter
   })
 })
 
 let counter = 0
 let chanceCounter = 3
 let matchCounter = 0
+
 let chancesLabel = document.querySelector("#chances-label")
 let firstSelectedCard
 let secondSelectedCard
 let firstPic
 let secondPic
 
-const selectCard = (card, selectedCard, selectedPic) => {
+const selectCard = (card, selectedCard) => {
   selectedCard = card
   selectedPic = card.innerHTML
   selectedCard.classList.remove("not-selected")
@@ -92,7 +66,6 @@ const selectCard = (card, selectedCard, selectedPic) => {
   counter++
 }
 
-chancesLabel.textContent = chanceCounter
 cards.forEach((card) => {
   card.addEventListener("click", () => {
     if (
@@ -100,13 +73,13 @@ cards.forEach((card) => {
       card.classList.contains("not-selected") &&
       chanceCounter >= 1
     ) {
-      selectCard(card, firstSelectedCard, firstPic)
+      selectCard(card, firstSelectedCard)
     } else if (
       counter === 1 &&
       card.classList.contains("not-selected") &&
       chanceCounter >= 1
     ) {
-      selectCard(card, secondSelectedCard, secondPic)
+      selectCard(card, secondSelectedCard)
       if (firstPic === secondPic) {
         matchCounter++
         counter = 0
@@ -127,7 +100,7 @@ cards.forEach((card) => {
       }
     }
 
-    if (matchCounter === 4) {
+    if (matchCounter === 10) {
       console.log("you won")
     }
   })

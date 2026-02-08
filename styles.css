@@ -20,13 +20,6 @@
 .seven-by-four-container {
   display: grid;
   width: 500px;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.seven-by-four-container {
-  display: grid;
-  width: 500px;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
