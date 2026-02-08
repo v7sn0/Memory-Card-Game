@@ -21,10 +21,11 @@ let picsArray = [
   "4-by-4-imgs/berry.png",
   "4-by-4-imgs/watermelon.png",
   "4-by-4-imgs/kiwi.png",
-  "4-by-4-imgs/mango.png", ////6
+  "4-by-4-imgs/mango.png",
 ]
 
 let threeByFourArr = [...picsArray]
+
 let fiveByFourArr = [
   ...picsArray,
   "4-by-4-imgs/blueberry.png",
@@ -34,9 +35,10 @@ let fiveByFourArr = [
   "4-by-4-imgs/blueberry.png",
   "4-by-4-imgs/fig.png",
   "4-by-4-imgs/pear.png",
-  "4-by-4-imgs/grapes.png", ///4
+  "4-by-4-imgs/grapes.png",
 ]
-let sevenByFiveArr = [
+
+let sevenByFourArr = [
   ...picsArray,
   "4-by-4-imgs/blueberry.png",
   "4-by-4-imgs/fig.png",
@@ -58,10 +60,10 @@ let sevenByFiveArr = [
 
 window.addEventListener("load", () => {
   cards.forEach((card) => {
-    randomIndex = Math.floor(Math.random() * sevenByFiveArr.length)
+    randomIndex = Math.floor(Math.random() * sevenByFourArr.length)
     fruitPicture = document.createElement("img")
-    fruitPicture.setAttribute("src", sevenByFiveArr[randomIndex])
-    sevenByFiveArr.splice(randomIndex, 1)
+    fruitPicture.setAttribute("src", sevenByFourArr[randomIndex])
+    sevenByFourArr.splice(randomIndex, 1)
     card.appendChild(fruitPicture)
   })
 })
@@ -75,6 +77,21 @@ let secondSelectedCard
 let firstPic
 let secondPic
 
+const selectCard = (card, selectedCard, selectedPic) => {
+  selectedCard = card
+  selectedPic = card.innerHTML
+  selectedCard.classList.remove("not-selected")
+  card.classList.add("selected")
+  if (counter === 0) {
+    firstPic = card.innerHTML
+    firstSelectedCard = selectedCard
+  } else if (counter === 1) {
+    secondPic = card.innerHTML
+    secondSelectedCard = selectedCard
+  }
+  counter++
+}
+
 chancesLabel.textContent = chanceCounter
 cards.forEach((card) => {
   card.addEventListener("click", () => {
@@ -83,25 +100,14 @@ cards.forEach((card) => {
       card.classList.contains("not-selected") &&
       chanceCounter >= 1
     ) {
-      firstSelectedCard = card
-      firstPic = card.innerHTML
-      firstSelectedCard.classList.remove("not-selected")
-      card.classList.add("selected")
-      console.log(firstPic)
-      counter++
+      selectCard(card, firstSelectedCard, firstPic)
     } else if (
       counter === 1 &&
       card.classList.contains("not-selected") &&
       chanceCounter >= 1
     ) {
-      secondSelectedCard = card
-      secondPic = card.innerHTML
-      secondSelectedCard.classList.remove("not-selected")
-      card.classList.add("selected")
-      console.log(secondPic)
-      counter++
+      selectCard(card, secondSelectedCard, secondPic)
       if (firstPic === secondPic) {
-        console.log(secondSelectedCard.classList)
         matchCounter++
         counter = 0
       } else {
