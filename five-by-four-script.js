@@ -6,26 +6,26 @@ let randomIndex
 let fruitPicture
 
 let picsArray = [
-  "4-by-4-imgs/apple.png",
-  "4-by-4-imgs/banana.png",
-  "4-by-4-imgs/berry.png",
-  "4-by-4-imgs/watermelon.png",
-  "4-by-4-imgs/kiwi.png",
-  "4-by-4-imgs/mango.png",
-  "4-by-4-imgs/apple.png",
-  "4-by-4-imgs/banana.png",
-  "4-by-4-imgs/berry.png",
-  "4-by-4-imgs/watermelon.png",
-  "4-by-4-imgs/kiwi.png",
-  "4-by-4-imgs/mango.png",
-  "4-by-4-imgs/blueberry.png",
-  "4-by-4-imgs/fig.png",
-  "4-by-4-imgs/pear.png",
-  "4-by-4-imgs/grapes.png",
-  "4-by-4-imgs/blueberry.png",
-  "4-by-4-imgs/fig.png",
-  "4-by-4-imgs/pear.png",
-  "4-by-4-imgs/grapes.png",
+  "fruit-images/apple.png",
+  "fruit-images/banana.png",
+  "fruit-images/berry.png",
+  "fruit-images/watermelon.png",
+  "fruit-images/kiwi.png",
+  "fruit-images/mango.png",
+  "fruit-images/apple.png",
+  "fruit-images/banana.png",
+  "fruit-images/berry.png",
+  "fruit-images/watermelon.png",
+  "fruit-images/kiwi.png",
+  "fruit-images/mango.png",
+  "fruit-images/blueberry.png",
+  "fruit-images/fig.png",
+  "fruit-images/pear.png",
+  "fruit-images/grapes.png",
+  "fruit-images/blueberry.png",
+  "fruit-images/fig.png",
+  "fruit-images/pear.png",
+  "fruit-images/grapes.png",
 ]
 
 clonedArr = [...picsArray]
@@ -95,6 +95,9 @@ cards.forEach((card) => {
           if (chanceCounter === 0) {
             console.log(chanceCounter)
             console.log("lost")
+            setTimeout(() => {
+              location.replace("game-over-page.html")
+            }, 1000)
           }
         }, 1000)
       }
@@ -102,6 +105,9 @@ cards.forEach((card) => {
 
     if (matchCounter === 10) {
       console.log("you won")
+      setTimeout(() => {
+        location.replace("level-completed-page.html")
+      }, 1000)
     }
   })
 })

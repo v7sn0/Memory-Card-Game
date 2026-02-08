@@ -41,3 +41,16 @@
   opacity: 1;
   transition: 1s;
 }
+
+/* for testing */
+.colored {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+}
+
+.colored-green {
+  background-color: rgb(4, 255, 0);
+  width: 100px;
+  height: 100px;
+}

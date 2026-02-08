@@ -41,8 +41,8 @@ In progress.
 ***
 
 ### Task List ###
-- [ ] Creating the structure of the game
-- [ ] Making the game functional
+- [x] Creating the structure of the game
+- [x] Making the game functional
 - [ ] Styling the game
 
 ### Credits ###
