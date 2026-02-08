@@ -3,7 +3,8 @@ const btn6by6 = document.querySelector("#btn-6-by-6")
 const btn8by8 = document.querySelector("#btn-8-by-8")
 
 let cardsContainer = document.querySelector(".four-by-four-container")
-let cards = document.querySelectorAll(".not-selected") /////
+let cards = document.querySelectorAll(".not-selected")
+let endScreen = document.querySelector(".end-screen")
 
 let randomIndex
 let fruitPicture
@@ -34,26 +35,29 @@ window.addEventListener("load", () => {
     randomIndex = Math.floor(Math.random() * clonedArray.length)
     fruitPicture = document.createElement("img")
     fruitPicture.setAttribute("src", clonedArray[randomIndex])
-    fruitPicture.style.width = "150px"
+    //fruitPicture.style.width = "150px"
     clonedArray.splice(randomIndex, 1)
     card.appendChild(fruitPicture)
   })
 })
 
 let counter = 0
-let chanceCounter = 0
+let chanceCounter = 3
 let matchCounter = 0
+let chancesLeft
+let chancesLabel = document.querySelector("#chances-label")
 let firstSelectedCard
 let secondSelectedCard
 let firstPic
 let secondPic
 
+chancesLabel.textContent = chanceCounter
 cards.forEach((card) => {
   card.addEventListener("click", () => {
     if (
       counter === 0 &&
       card.classList.contains("not-selected") &&
-      chanceCounter <= 2
+      chanceCounter >= 1
     ) {
       firstSelectedCard = card
       firstPic = card.innerHTML
@@ -64,7 +68,7 @@ cards.forEach((card) => {
     } else if (
       counter === 1 &&
       card.classList.contains("not-selected") &&
-      chanceCounter <= 2
+      chanceCounter >= 1
     ) {
       secondSelectedCard = card
       secondPic = card.innerHTML
@@ -78,16 +82,19 @@ cards.forEach((card) => {
         counter = 0
       } else {
         setTimeout(() => {
+          chancesLabel.textContent = chanceCounter - 1
           firstSelectedCard.classList.add("not-selected")
           secondSelectedCard.classList.add("not-selected")
           firstSelectedCard.classList.remove("selected")
           secondSelectedCard.classList.remove("selected")
           counter = 0
-          chanceCounter++
+          chanceCounter--
+          if (chanceCounter === 0) {
+            console.log(chanceCounter)
+            console.log("lost")
+          }
         }, 1000)
       }
-    } else if (chanceCounter === 3) {
-      console.log("lost")
     }
 
     if (matchCounter === 8) {
