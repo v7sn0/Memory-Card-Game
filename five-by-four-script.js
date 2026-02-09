@@ -30,6 +30,12 @@ let picsArray = [
 
 clonedArr = [...picsArray]
 
+setTimeout(() => {
+  cards.forEach((card) => {
+    card.classList.add("starting-peek")
+  })
+}, 1000)
+
 window.addEventListener("load", () => {
   cards.forEach((card) => {
     randomIndex = Math.floor(Math.random() * clonedArr.length)
@@ -55,6 +61,7 @@ const selectCard = (card, selectedCard) => {
   selectedCard = card
   selectedPic = card.innerHTML
   selectedCard.classList.remove("not-selected")
+  selectedCard.classList.remove("starting-peek")
   card.classList.add("selected")
   if (counter === 0) {
     firstPic = card.innerHTML
@@ -87,7 +94,9 @@ cards.forEach((card) => {
         setTimeout(() => {
           chancesLabel.textContent = chanceCounter - 1
           firstSelectedCard.classList.add("not-selected")
+          firstSelectedCard.classList.add("starting-peek")
           secondSelectedCard.classList.add("not-selected")
+          secondSelectedCard.classList.add("starting-peek")
           firstSelectedCard.classList.remove("selected")
           secondSelectedCard.classList.remove("selected")
           counter = 0

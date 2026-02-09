@@ -5,7 +5,9 @@
 }
 
 body {
-  background-color: rgb(255, 255, 204);
+  margin: 0;
+  padding: 0;
+  background-color: rgb(102, 153, 255);
   font-family: "Young Serif";
 }
 
@@ -15,7 +17,7 @@ body {
   justify-content: center;
   margin-top: 50px;
   font-size: 3rem;
-  color: rgb(51, 102, 255);
+  color: rgb(255, 255, 204);
 }
 
 .home-container {
@@ -35,8 +37,8 @@ body {
   border-radius: 5px;
   width: 140px;
   height: 80px;
-  background-color: rgb(102, 102, 255);
-  color: rgb(255, 255, 255);
+  background-color: rgb(212, 212, 171);
+  color: rgb(102, 153, 255);
   font-family: "Young Serif";
   font-size: 1.3rem;
   position: relative;
@@ -71,16 +73,17 @@ body {
   padding: 10px;
   display: flex;
   justify-content: space-evenly;
-  background-color: rgb(102, 153, 255);
+  background-color: rgb(255, 255, 204);
   align-items: center;
 }
 
 #exit-btn {
+  font-family: "Young Serif";
   border: none;
   border-radius: 5px;
   width: 120px;
   height: 40px;
-  background-color: rgb(55, 53, 65);
+  background-color: rgb(102, 153, 255);
   font-size: 1.3rem;
 }
 
@@ -108,29 +111,32 @@ body {
   margin: 50px auto;
 }
 
+img {
+  border-radius: 5px;
+}
+
 .square {
   width: 150px;
   height: 150px;
+  border-radius: 5px;
   background-color: rgb(102, 102, 255);
   margin: 7px;
   display: flex;
 }
 
-/* .not-selected {
-  transition: 1s;
-} */
-
 .not-selected img {
+  transition: 1s;
+}
+
+.starting-peek img {
   opacity: 0;
   transition: 1s;
 }
 
 .selected {
   opacity: 1;
-  /* transition: 1s; */
 }
 
-/* for testing */
 .colored {
   background-color: red;
   width: 100px;
