@@ -19,17 +19,9 @@ let picsArray = [
   "fruit-images/watermelon.png",
   "fruit-images/kiwi.png",
   "fruit-images/mango.png",
-  "fruit-images/blueberry.png",
-  "fruit-images/fig.png",
-  "fruit-images/pear.png",
-  "fruit-images/grapes.png",
-  "fruit-images/blueberry.png",
-  "fruit-images/fig.png",
-  "fruit-images/pear.png",
-  "fruit-images/grapes.png",
 ]
 
-clonedArr = [...picsArray]
+let clonedArr = [...picsArray]
 
 setTimeout(() => {
   cards.forEach((card) => {
@@ -139,7 +131,8 @@ cards.forEach((card) => {
       }
     }
 
-    if (matchCounter === 10) {
+    if (matchCounter === 6) {
+      console.log("you won")
       winFlag = true
       setTimeout(() => {
         cards.forEach((card) => {

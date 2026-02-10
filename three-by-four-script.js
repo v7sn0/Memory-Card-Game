@@ -1,6 +1,7 @@
-let cardsContainer = document.querySelector(".cards-container")
 let cards = document.querySelectorAll(".not-selected")
 let endScreen = document.querySelector(".end-screen")
+const lowerStrip = document.querySelector(".lower-strip")
+const body = document.querySelector("#body")
 
 let randomIndex
 let fruitPicture
@@ -48,6 +49,10 @@ let firstSelectedCard
 let secondSelectedCard
 let firstPic
 let secondPic
+let endMsgDiv
+let endMsg
+let winFlag
+let winLoseVar
 
 const selectCard = (card, selectedCard) => {
   selectedCard = card
@@ -63,6 +68,25 @@ const selectCard = (card, selectedCard) => {
     secondSelectedCard = selectedCard
   }
   counter++
+}
+
+const func = (flag) => {
+  let winLoseMsgs
+  if (!flag) {
+    winLoseVar = "won"
+    winLoseMsgs = ["Lose", "Haha"]
+  } else {
+    winLoseVar = "lost"
+    winLoseMsgs = ["Congrats", "You won"]
+  }
+  endMsgDiv = document.createElement("div")
+  endMsgDiv.classList.add("end-msg-div")
+  body.appendChild(endMsgDiv)
+  endMsg = document.createElement("h1")
+  endMsg.classList.add(`${winLoseVar}`)
+  endMsg.textContent =
+    winLoseMsgs[Math.floor(Math.random() * winLoseMsgs.length)]
+  endMsgDiv.appendChild(endMsg)
 }
 
 cards.forEach((card) => {
@@ -94,10 +118,13 @@ cards.forEach((card) => {
           counter = 0
           chanceCounter--
           if (chanceCounter === 0) {
-            console.log(chanceCounter)
-            console.log("lost")
+            winFlag = false
             setTimeout(() => {
-              location.replace("game-over-page.html")
+              cards.forEach((card) => {
+                card.remove()
+                lowerStrip.remove()
+              })
+              func(winFlag)
             }, 1000)
           }
         }, 1000)
@@ -105,9 +132,13 @@ cards.forEach((card) => {
     }
 
     if (matchCounter === 6) {
-      console.log("you won")
+      winFlag = true
       setTimeout(() => {
-        location.replace("level-completed-page.html")
+        cards.forEach((card) => {
+          card.remove()
+          lowerStrip.remove()
+        })
+        func(winFlag)
       }, 1000)
     }
   })

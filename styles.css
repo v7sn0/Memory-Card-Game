@@ -17,7 +17,7 @@ body {
   justify-content: center;
   margin-top: 50px;
   font-size: 3rem;
-  color: rgb(255, 255, 204);
+  color: rgb(153, 102, 51);
 }
 
 .home-container {
@@ -38,7 +38,7 @@ body {
   width: 140px;
   height: 80px;
   background-color: rgb(212, 212, 171);
-  color: rgb(102, 153, 255);
+  color: rgb(153, 102, 51);
   font-family: "Young Serif";
   font-size: 1.3rem;
   position: relative;
@@ -75,6 +75,8 @@ body {
   justify-content: space-evenly;
   background-color: rgb(255, 255, 204);
   align-items: center;
+  font-size: 1.3rem;
+  color: rgb(102, 51, 0);
 }
 
 #exit-btn {
@@ -85,6 +87,7 @@ body {
   height: 40px;
   background-color: rgb(102, 153, 255);
   font-size: 1.3rem;
+  color: rgb(102, 51, 0);
 }
 
 .three-by-four-container {
@@ -147,4 +150,20 @@ img {
   background-color: rgb(4, 255, 0);
   width: 100px;
   height: 100px;
+}
+
+.end-msg-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-msg-div .won {
+  font-size: 3.3rem;
+}
+
+.end-msg-div {
+}
+
+.end-msg-div .lost {
 }
