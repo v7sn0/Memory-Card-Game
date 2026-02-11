@@ -21,11 +21,22 @@ A memory card game, where the user flips cards, trying to find two matching card
 ***
 
 ### Getting Started ###
-  Empty for now.
+  Choose how many cards you want to play with, then start playing the game.
 ***
 
 ### Screenshots ###
-In progress.
+#### Starting Screen ####
+![Starting screen](./images/screenshot1.png)
+
+#### Gameplay Image ####
+![Gameplay Image](./images/screenshot2.png)
+
+#### celebration Screen ####
+![celebration Screen](./images/screenshot3.png)
+
+#### Game Over Screen ####
+![Game Over](./images/screenshot4.png)
+
 #### Starting Page Structure ####
 ![Starting Page Structure](./images/page1.drawio.png)
 
@@ -43,7 +54,8 @@ In progress.
 ### Task List ###
 - [x] Creating the structure of the game
 - [x] Making the game functional
-- [ ] Styling the game
+- [x] Styling the game
 
 ### Credits ###
-Empty for now.
+##### Animate.css Library: [Animate.css](https://animate.style/)
+##### Gemini AI (to make the fruit pictures): [Gemini](https://gemini.google.com/app)
