@@ -79,13 +79,13 @@ body {
   color: rgb(102, 51, 0);
 }
 
-#exit-btn {
+.btns {
   font-family: "Young Serif";
   border: none;
   border-radius: 5px;
   width: 120px;
   height: 40px;
-  background-color: rgb(102, 153, 255);
+  background-color: rgb(73, 110, 185);
   font-size: 1.3rem;
   color: rgb(102, 51, 0);
 }
@@ -159,11 +159,17 @@ img {
 }
 
 .end-msg-div .won {
-  font-size: 3.3rem;
-}
-
-.end-msg-div {
+  font-size: 6.3rem;
 }
 
 .end-msg-div .lost {
+  font-size: 6.3rem;
+  border-radius: 5px;
+  padding: 15px;
+  /* box-shadow: 1px 1px 10px rgb(236, 48, 48); */
+}
+
+.btns-div {
+  display: flex;
+  justify-content: space-evenly;
 }

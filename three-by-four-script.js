@@ -54,6 +54,10 @@ let endMsg
 let winFlag
 let winLoseVar
 
+let exitBtn
+let restartBtn
+let btnsDiv
+
 const selectCard = (card, selectedCard) => {
   selectedCard = card
   selectedPic = card.innerHTML
@@ -70,23 +74,42 @@ const selectCard = (card, selectedCard) => {
   counter++
 }
 
-const func = (flag) => {
+const finishScreen = (flag) => {
   let winLoseMsgs
   if (!flag) {
-    winLoseVar = "won"
+    winLoseVar = "lost"
     winLoseMsgs = ["Lose", "Haha"]
   } else {
-    winLoseVar = "lost"
+    winLoseVar = "won"
     winLoseMsgs = ["Congrats", "You won"]
   }
   endMsgDiv = document.createElement("div")
+  btnsDiv = document.createElement("div")
   endMsgDiv.classList.add("end-msg-div")
+  exitBtn = document.createElement("button")
+  restartBtn = document.createElement("button")
+  btnsDiv.classList.add("btns-div")
+  exitBtn.classList.add("btns")
+  restartBtn.classList.add("btns")
+  exitBtn.textContent = "Exit"
+  restartBtn.textContent = "Restart"
   body.appendChild(endMsgDiv)
+  body.appendChild(btnsDiv)
   endMsg = document.createElement("h1")
   endMsg.classList.add(`${winLoseVar}`)
   endMsg.textContent =
     winLoseMsgs[Math.floor(Math.random() * winLoseMsgs.length)]
   endMsgDiv.appendChild(endMsg)
+  btnsDiv.appendChild(exitBtn)
+  btnsDiv.appendChild(restartBtn)
+
+  exitBtn.addEventListener("click", () => {
+    location.replace("index.html")
+  })
+
+  restartBtn.addEventListener("click", () => {
+    location.replace("three-by-four.html")
+  })
 }
 
 cards.forEach((card) => {
@@ -124,7 +147,7 @@ cards.forEach((card) => {
                 card.remove()
                 lowerStrip.remove()
               })
-              func(winFlag)
+              finishScreen(winFlag)
             }, 1000)
           }
         }, 1000)
@@ -138,7 +161,7 @@ cards.forEach((card) => {
           card.remove()
           lowerStrip.remove()
         })
-        func(winFlag)
+        finishScreen(winFlag)
       }, 1000)
     }
   })
