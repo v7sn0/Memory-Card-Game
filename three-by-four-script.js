@@ -21,8 +21,6 @@ let picsArray = [
   "fruit-images/mango.png",
 ]
 
-let clonedArr = [...picsArray]
-
 setTimeout(() => {
   cards.forEach((card) => {
     card.classList.add("starting-peek")
@@ -31,10 +29,10 @@ setTimeout(() => {
 
 window.addEventListener("load", () => {
   cards.forEach((card) => {
-    randomIndex = Math.floor(Math.random() * clonedArr.length)
+    randomIndex = Math.floor(Math.random() * picsArray.length)
     fruitPicture = document.createElement("img")
-    fruitPicture.setAttribute("src", clonedArr[randomIndex])
-    clonedArr.splice(randomIndex, 1)
+    fruitPicture.setAttribute("src", picsArray[randomIndex])
+    picsArray.splice(randomIndex, 1)
     card.appendChild(fruitPicture)
     chancesLabel.textContent = chanceCounter
   })
