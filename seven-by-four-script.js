@@ -43,7 +43,7 @@ setTimeout(() => {
   cards.forEach((card) => {
     card.classList.add("starting-peek")
   })
-}, 1000)
+}, 5000)
 
 window.addEventListener("load", () => {
   cards.forEach((card) => {
@@ -69,13 +69,9 @@ let endMsgDiv
 let endMsg
 let winFlag
 let winLoseVar
-let winLosePics
-let winLosePic
-
 let exitBtn
 let restartBtn
 let btnsDiv
-let picsDiv
 
 const selectCard = (card, selectedCard) => {
   selectedCard = card
@@ -98,29 +94,27 @@ const finishScreen = (flag) => {
   let winLoseMsgs
   if (!flag) {
     winLoseVar = "lost"
-    winLoseMsgs = ["Lose", "Haha"]
-    winLosePics = ["won-lost-images/fsih.jpg"]
+    winLoseMsgs = ["Sorry, try again", "You lost", "Keep trying!"]
   } else {
     winLoseVar = "won"
-    winLoseMsgs = ["Congrats", "You won"]
+    winLoseMsgs = [
+      "Well done!",
+      "Congratulations, you won!",
+      "We got a winner!",
+    ]
   }
   endMsgDiv = document.createElement("div")
-  picsDiv = document.createElement("div")
   btnsDiv = document.createElement("div")
 
   endMsgDiv.classList.add("end-msg-div")
   exitBtn = document.createElement("button")
   restartBtn = document.createElement("button")
-  winLosePic = document.createElement("img")
-  winLosePic.setAttribute("src", winLosePics[0])
   btnsDiv.classList.add("btns-div")
   exitBtn.classList.add("btns")
   restartBtn.classList.add("btns")
-  picsDiv.classList.add("pics-div")
   exitBtn.textContent = "Exit"
   restartBtn.textContent = "Restart"
   body.appendChild(endMsgDiv)
-  body.appendChild(picsDiv)
   body.appendChild(btnsDiv)
   endMsg = document.createElement("h1")
   endMsg.classList.add(`${winLoseVar}`)
@@ -129,7 +123,6 @@ const finishScreen = (flag) => {
   endMsgDiv.appendChild(endMsg)
   btnsDiv.appendChild(exitBtn)
   btnsDiv.appendChild(restartBtn)
-  picsDiv.appendChild(winLosePic)
 
   exitBtn.addEventListener("click", () => {
     location.replace("index.html")
@@ -140,59 +133,61 @@ const finishScreen = (flag) => {
   })
 }
 
-cards.forEach((card) => {
-  card.addEventListener("click", () => {
-    if (
-      counter === 0 &&
-      card.classList.contains("not-selected") &&
-      chanceCounter >= 1
-    ) {
-      selectCard(card, firstSelectedCard)
-    } else if (
-      counter === 1 &&
-      card.classList.contains("not-selected") &&
-      chanceCounter >= 1
-    ) {
-      selectCard(card, secondSelectedCard)
-      if (firstPic === secondPic) {
-        matchCounter++
-        counter = 0
-      } else {
-        setTimeout(() => {
-          chancesLabel.textContent = chanceCounter - 1
-          firstSelectedCard.classList.add("not-selected")
-          firstSelectedCard.classList.add("starting-peek")
-          secondSelectedCard.classList.add("not-selected")
-          secondSelectedCard.classList.add("starting-peek")
-          firstSelectedCard.classList.remove("selected")
-          firstSelectedCard.classList.remove("animate__flip")
-          secondSelectedCard.classList.remove("selected")
-          secondSelectedCard.classList.remove("animate__flip")
+setTimeout(() => {
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      if (
+        counter === 0 &&
+        card.classList.contains("not-selected") &&
+        chanceCounter >= 1
+      ) {
+        selectCard(card, firstSelectedCard)
+      } else if (
+        counter === 1 &&
+        card.classList.contains("not-selected") &&
+        chanceCounter >= 1
+      ) {
+        selectCard(card, secondSelectedCard)
+        if (firstPic === secondPic) {
+          matchCounter++
           counter = 0
-          chanceCounter--
-          if (chanceCounter === 0) {
-            winFlag = false
-            setTimeout(() => {
-              cards.forEach((card) => {
-                card.remove()
-                lowerStrip.remove()
-              })
-              finishScreen(winFlag)
-            }, 1000)
-          }
-        }, 1000)
+        } else {
+          setTimeout(() => {
+            chancesLabel.textContent = chanceCounter - 1
+            firstSelectedCard.classList.add("not-selected")
+            firstSelectedCard.classList.add("starting-peek")
+            secondSelectedCard.classList.add("not-selected")
+            secondSelectedCard.classList.add("starting-peek")
+            firstSelectedCard.classList.remove("selected")
+            firstSelectedCard.classList.remove("animate__flip")
+            secondSelectedCard.classList.remove("selected")
+            secondSelectedCard.classList.remove("animate__flip")
+            counter = 0
+            chanceCounter--
+            if (chanceCounter === 0) {
+              winFlag = false
+              setTimeout(() => {
+                cards.forEach((card) => {
+                  card.remove()
+                  lowerStrip.remove()
+                })
+                finishScreen(winFlag)
+              }, 2000)
+            }
+          }, 1500)
+        }
       }
-    }
 
-    if (matchCounter === 14) {
-      winFlag = true
-      setTimeout(() => {
-        cards.forEach((card) => {
-          card.remove()
-          lowerStrip.remove()
-        })
-        finishScreen(winFlag)
-      }, 1000)
-    }
+      if (matchCounter === 14) {
+        winFlag = true
+        setTimeout(() => {
+          cards.forEach((card) => {
+            card.remove()
+            lowerStrip.remove()
+          })
+          finishScreen(winFlag)
+        }, 1500)
+      }
+    })
   })
-})
+}, 5500)

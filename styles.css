@@ -27,11 +27,6 @@ body {
   align-items: center;
 }
 
-/* .home-container h1 {
-  align-self: flex-start;
-  text-align: center;
-} */
-
 .select-grid {
   border: none;
   border-radius: 5px;
@@ -44,27 +39,7 @@ body {
   position: relative;
 }
 
-/* .select-grid::before {
-  position: absolute;
-  content: "s";
-  left: 0;
-  top: 0;
-  width: 140px;
-  height: 80px;
-  z-index: 0;
-  transition: 1s;
-}
-
-.select-grid:hover::before {
-  background-color: red;
-  width: 140px;
-  height: 80px;
-  z-index: 1;
-  border-radius: 5px;
-} */
-
 .select-grid:hover {
-  cursor: pointer;
   box-shadow: 5px 5px 20px rgb(55, 53, 65);
 }
 
@@ -85,9 +60,8 @@ body {
   border-radius: 5px;
   width: 120px;
   height: 40px;
-  background-color: rgb(73, 110, 185);
   font-size: 1.3rem;
-  color: rgb(102, 51, 0);
+  color: rgb(118, 87, 25);
 }
 
 .three-by-four-container {
@@ -140,35 +114,28 @@ img {
   opacity: 1;
 }
 
-.colored {
-  background-color: red;
-  width: 100px;
-  height: 100px;
-}
-
-.colored-green {
-  background-color: rgb(4, 255, 0);
-  width: 100px;
-  height: 100px;
-}
-
 .end-msg-div {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -160px;
-  margin-bottom: -50px;
+  margin-top: -110px;
+  margin-bottom: -20px;
 }
 
 .end-msg-div .won {
-  font-size: 6.3rem;
+  font-size: 4.3rem;
+  border-radius: 5px;
+  padding: 15px;
+  color: rgb(102, 255, 51);
+  font-weight: 100;
 }
 
 .end-msg-div .lost {
-  font-size: 6.3rem;
+  font-size: 4.3rem;
   border-radius: 5px;
   padding: 15px;
-  /* box-shadow: 1px 1px 10px rgb(236, 48, 48); */
+  color: rgb(233, 78, 78);
+  font-weight: 100;
 }
 
 .pics-div {
@@ -184,4 +151,9 @@ img {
   margin: 30px;
   display: flex;
   justify-content: space-evenly;
+}
+
+button {
+  cursor: pointer;
+  background-color: rgb(179, 198, 255);
 }
