@@ -156,6 +156,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -160px;
+  margin-bottom: -50px;
 }
 
 .end-msg-div .won {
@@ -169,7 +171,17 @@ img {
   /* box-shadow: 1px 1px 10px rgb(236, 48, 48); */
 }
 
+.pics-div {
+  display: flex;
+  justify-content: center;
+}
+
+.pics-div img {
+  width: 250px;
+}
+
 .btns-div {
+  margin: 30px;
   display: flex;
   justify-content: space-evenly;
 }

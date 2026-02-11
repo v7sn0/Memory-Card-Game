@@ -61,16 +61,20 @@ let endMsgDiv
 let endMsg
 let winFlag
 let winLoseVar
+let winLosePics
+let winLosePic
 
 let exitBtn
 let restartBtn
 let btnsDiv
+let picsDiv
 
 const selectCard = (card, selectedCard) => {
   selectedCard = card
   selectedPic = card.innerHTML
   selectedCard.classList.remove("not-selected")
   selectedCard.classList.remove("starting-peek")
+  selectedCard.classList.add("animate__flip")
   card.classList.add("selected")
   if (counter === 0) {
     firstPic = card.innerHTML
@@ -87,21 +91,28 @@ const finishScreen = (flag) => {
   if (!flag) {
     winLoseVar = "lost"
     winLoseMsgs = ["Lose", "Haha"]
+    winLosePics = ["won-lost-images/fsih.jpg"]
   } else {
     winLoseVar = "won"
     winLoseMsgs = ["Congrats", "You won"]
   }
   endMsgDiv = document.createElement("div")
+  picsDiv = document.createElement("div")
   btnsDiv = document.createElement("div")
+
   endMsgDiv.classList.add("end-msg-div")
   exitBtn = document.createElement("button")
   restartBtn = document.createElement("button")
+  winLosePic = document.createElement("img")
+  winLosePic.setAttribute("src", winLosePics[0])
   btnsDiv.classList.add("btns-div")
   exitBtn.classList.add("btns")
   restartBtn.classList.add("btns")
+  picsDiv.classList.add("pics-div")
   exitBtn.textContent = "Exit"
   restartBtn.textContent = "Restart"
   body.appendChild(endMsgDiv)
+  body.appendChild(picsDiv)
   body.appendChild(btnsDiv)
   endMsg = document.createElement("h1")
   endMsg.classList.add(`${winLoseVar}`)
@@ -110,6 +121,7 @@ const finishScreen = (flag) => {
   endMsgDiv.appendChild(endMsg)
   btnsDiv.appendChild(exitBtn)
   btnsDiv.appendChild(restartBtn)
+  picsDiv.appendChild(winLosePic)
 
   exitBtn.addEventListener("click", () => {
     location.replace("index.html")
@@ -145,7 +157,9 @@ cards.forEach((card) => {
           secondSelectedCard.classList.add("not-selected")
           secondSelectedCard.classList.add("starting-peek")
           firstSelectedCard.classList.remove("selected")
+          firstSelectedCard.classList.remove("animate__flip")
           secondSelectedCard.classList.remove("selected")
+          secondSelectedCard.classList.remove("animate__flip")
           counter = 0
           chanceCounter--
           if (chanceCounter === 0) {

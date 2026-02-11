@@ -53,6 +53,13 @@ let endMsgDiv
 let endMsg
 let winFlag
 let winLoseVar
+let winLosePics
+let winLosePic
+
+let exitBtn
+let restartBtn
+let btnsDiv
+let picsDiv
 
 const selectCard = (card, selectedCard) => {
   selectedCard = card
@@ -70,23 +77,50 @@ const selectCard = (card, selectedCard) => {
   counter++
 }
 
-const func = (flag) => {
+const finishScreen = (flag) => {
   let winLoseMsgs
   if (!flag) {
-    winLoseVar = "won"
-    winLoseMsgs = ["Lose", "Haha"]
-  } else {
     winLoseVar = "lost"
+    winLoseMsgs = ["Lose", "Haha"]
+    winLosePics = ["won-lost-images/fsih.jpg"]
+  } else {
+    winLoseVar = "won"
     winLoseMsgs = ["Congrats", "You won"]
   }
   endMsgDiv = document.createElement("div")
+  picsDiv = document.createElement("div")
+  btnsDiv = document.createElement("div")
+
   endMsgDiv.classList.add("end-msg-div")
+  exitBtn = document.createElement("button")
+  restartBtn = document.createElement("button")
+  winLosePic = document.createElement("img")
+  winLosePic.setAttribute("src", winLosePics[0])
+  btnsDiv.classList.add("btns-div")
+  exitBtn.classList.add("btns")
+  restartBtn.classList.add("btns")
+  picsDiv.classList.add("pics-div")
+  exitBtn.textContent = "Exit"
+  restartBtn.textContent = "Restart"
   body.appendChild(endMsgDiv)
+  body.appendChild(picsDiv)
+  body.appendChild(btnsDiv)
   endMsg = document.createElement("h1")
   endMsg.classList.add(`${winLoseVar}`)
   endMsg.textContent =
     winLoseMsgs[Math.floor(Math.random() * winLoseMsgs.length)]
   endMsgDiv.appendChild(endMsg)
+  btnsDiv.appendChild(exitBtn)
+  btnsDiv.appendChild(restartBtn)
+  picsDiv.appendChild(winLosePic)
+
+  exitBtn.addEventListener("click", () => {
+    location.replace("index.html")
+  })
+
+  restartBtn.addEventListener("click", () => {
+    location.replace("three-by-four.html")
+  })
 }
 
 cards.forEach((card) => {
@@ -124,7 +158,7 @@ cards.forEach((card) => {
                 card.remove()
                 lowerStrip.remove()
               })
-              func(winFlag)
+              finishScreen(winFlag)
             }, 1000)
           }
         }, 1000)
@@ -132,14 +166,13 @@ cards.forEach((card) => {
     }
 
     if (matchCounter === 6) {
-      console.log("you won")
       winFlag = true
       setTimeout(() => {
         cards.forEach((card) => {
           card.remove()
           lowerStrip.remove()
         })
-        func(winFlag)
+        finishScreen(winFlag)
       }, 1000)
     }
   })
